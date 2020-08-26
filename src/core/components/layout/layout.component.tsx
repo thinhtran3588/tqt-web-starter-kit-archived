@@ -1,6 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
-import styles from './layout.module.css';
+import Link from 'next/link';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Icon from '@material-ui/core/Icon';
+import {useStyles} from './layout.styles';
 
 export interface LayoutProps {
   children?: React.ReactNode;
@@ -9,13 +14,49 @@ export interface LayoutProps {
 
 export const Layout = (props: LayoutProps): JSX.Element => {
   const {title, children} = props;
+  const classes = useStyles();
+  const defaultTitle = 'TQT Web Starter Kit';
+  const pageLinks = [
+    {title: 'Home', url: '/'},
+    {title: 'Blogs', url: '/blogs'},
+    {title: 'About', url: '/about'},
+    {title: 'Form', url: '/form'},
+  ];
   return (
-    <div className={styles.container}>
+    <div className={classes.root}>
       <Head>
-        <title>{title || 'TQT Web Starter Kit'}</title>
+        <title>{title || defaultTitle}</title>
         <link rel='icon' href='/favicon.ico' />
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap' />
+        <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
       </Head>
 
+      <AppBar position='static'>
+        <Toolbar>
+          <Link href='/'>
+            <a href='/'>
+              <img src='/app-icon.png' alt='TQT Logo' className={classes.logo} />
+            </a>
+          </Link>
+          <Typography variant='h6' className={classes.title}>
+            {defaultTitle}
+          </Typography>
+          {pageLinks.map((link) => (
+            <Link href={link.url} key={link.url}>
+              <a href={link.url}>
+                <Typography variant='h6' className={classes.pageLink}>
+                  {link.title}
+                </Typography>
+              </a>
+            </Link>
+          ))}
+          <Link href='/login' key='login'>
+            <a href='/login'>
+              <Icon title='Login'>login</Icon>
+            </a>
+          </Link>
+        </Toolbar>
+      </AppBar>
       {children}
     </div>
   );
