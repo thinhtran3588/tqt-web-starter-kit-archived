@@ -27,8 +27,20 @@ export const Layout = (props: LayoutProps): JSX.Element => {
       <Head>
         <title>{title || defaultTitle}</title>
         <link rel='icon' href='/favicon.ico' />
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap' />
-        <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
+        <link
+          rel='preload'
+          href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+          as='style'
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onLoad={"this.onload=null;this.rel='stylesheet'" as any}
+        />
+        <link
+          rel='preload'
+          href='https://fonts.googleapis.com/icon?family=Material+Icons'
+          as='style'
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onLoad={"this.onload=null;this.rel='stylesheet'" as any}
+        />
       </Head>
 
       <AppBar position='static'>
