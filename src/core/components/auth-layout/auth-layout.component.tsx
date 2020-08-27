@@ -5,16 +5,21 @@ import {useStyles} from './auth-layout.styles';
 export interface AuthLayoutProps {
   children?: React.ReactNode;
   title?: string;
+  description?: string;
 }
 
 export const AuthLayout = (props: AuthLayoutProps): JSX.Element => {
-  const {title, children} = props;
+  const {
+    title = 'TQT Web Starter Kit',
+    description = 'The web starter kit written in Next.js, React and Typescript with <3',
+    children,
+  } = props;
   const classes = useStyles();
-  const defaultTitle = 'TQT Web Starter Kit';
   return (
     <div className={classes.root}>
       <Head>
-        <title>{title || defaultTitle}</title>
+        <title>{title}</title>
+        <meta name='Description' content={description} />
         <link rel='icon' href='/favicon.ico' />
         <link
           rel='preload'

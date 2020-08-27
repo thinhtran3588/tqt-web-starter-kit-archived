@@ -11,12 +11,16 @@ import {useStyles} from './layout.styles';
 export interface LayoutProps {
   children?: React.ReactNode;
   title?: string;
+  description?: string;
 }
 
 export const Layout = (props: LayoutProps): JSX.Element => {
-  const {title, children} = props;
+  const {
+    title = 'TQT Web Starter Kit',
+    description = 'The web starter kit written in Next.js, React and Typescript with <3',
+    children,
+  } = props;
   const classes = useStyles();
-  const defaultTitle = 'TQT Web Starter Kit';
   const pageLinks = [
     {title: 'Home', url: '/'},
     {title: 'Blogs', url: '/blogs'},
@@ -26,7 +30,8 @@ export const Layout = (props: LayoutProps): JSX.Element => {
   return (
     <div className={classes.root}>
       <Head>
-        <title>{title || defaultTitle}</title>
+        <title>{title}</title>
+        <meta name='Description' content={description} />
         <link rel='icon' href='/favicon.ico' />
         <link
           rel='preload'
@@ -52,7 +57,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
             </a>
           </Link>
           <Typography variant='h6' className={classes.title}>
-            {defaultTitle}
+            {title}
           </Typography>
           {pageLinks.map((link) => (
             <Link href={link.url} key={link.url}>
@@ -65,7 +70,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
           ))}
           <Link href='/signin' key='signin'>
             <a href='/signin' title='Sign In'>
-              <IconButton color='inherit'>
+              <IconButton color='inherit' title='Sign In'>
                 <Icon>login</Icon>
               </IconButton>
             </a>
