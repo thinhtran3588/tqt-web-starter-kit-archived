@@ -4,6 +4,7 @@ import Link from 'next/link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import {useStyles} from './layout.styles';
 
@@ -62,9 +63,11 @@ export const Layout = (props: LayoutProps): JSX.Element => {
               </a>
             </Link>
           ))}
-          <Link href='/login' key='login'>
-            <a href='/login'>
-              <Icon title='Login'>login</Icon>
+          <Link href='/signin' key='signin'>
+            <a href='/signin' title='Sign In'>
+              <IconButton color='inherit'>
+                <Icon>login</Icon>
+              </IconButton>
             </a>
           </Link>
         </Toolbar>

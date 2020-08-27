@@ -12,6 +12,7 @@
     "noEmit": true,
     "paths": {
       "@app/*": ["src/*"],
+      "@auth/*": ["src/modules/auth/*"],
       "@website/*": ["src/modules/website/*"]
     },
     "resolveJsonModule": true,
