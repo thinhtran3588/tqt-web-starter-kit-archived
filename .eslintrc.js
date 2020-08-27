@@ -50,6 +50,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': ['error'], // forbid to use 'any' type
     'react/jsx-closing-bracket-location': 'off', // let prettier formats the code
     'react/require-default-props': 'off',
+    'react/jsx-wrap-multilines': 'off',
   },
   settings: {
     'import/resolver': {

@@ -11,10 +11,19 @@ export const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  pageLink: {
-    marginRight: theme.spacing(3),
+  pageLinkButton: {
+    padding: theme.spacing(2.5),
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
   },
   loginIcon: {
     color: '#fff',
+  },
+  flag: {
+    height: theme.spacing(3),
+  },
+  langFlag: {
+    height: theme.spacing(3),
+    paddingRight: theme.spacing(2),
   },
 }));
