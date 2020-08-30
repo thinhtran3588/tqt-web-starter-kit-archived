@@ -1,3 +1,4 @@
 .next
 workbox-*.js
 service-worker.js
+next.config.js
