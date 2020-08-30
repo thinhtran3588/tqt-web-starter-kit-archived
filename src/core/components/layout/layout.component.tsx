@@ -11,6 +11,7 @@ import Hidden from '@material-ui/core/Hidden';
 import InputIcon from '@material-ui/icons/Input';
 import MenuIcon from '@material-ui/icons/Menu';
 import {BaseLayout} from '../base-layout/base-layout.component';
+import {Drawer} from './components/drawer/drawer.component';
 import {useStyles} from './layout.styles';
 
 export interface LayoutProps {
@@ -30,10 +31,10 @@ export const Layout = (props: LayoutProps): JSX.Element => {
   } = props;
   const classes = useStyles();
   const pageLinks = [
-    {url: '/', key: 'home'},
-    {url: '/blogs', key: 'blogs'},
-    {url: '/about', key: 'about'},
-    {url: '/form', key: 'form'},
+    {url: '/', key: 'home', text: 'home'},
+    {url: '/blogs', key: 'blogs', text: 'blogs'},
+    {url: '/about', key: 'about', text: 'about'},
+    {url: '/form', key: 'form', text: 'form'},
   ];
   const languages = [
     {
@@ -45,6 +46,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
       title: 'Tiếng Việt',
     },
   ];
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const [langAnchorEl, setLangAnchorEl] = useState(undefined);
 
@@ -60,8 +62,6 @@ export const Layout = (props: LayoutProps): JSX.Element => {
     closeLangMenu();
   };
 
-  const openMenu = (): void => {};
-
   return (
     <BaseLayout title={title} description={description}>
       <AppBar position='static' variant='elevation'>
@@ -74,7 +74,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
           <Typography variant='h6' className={classes.title}>
             {appName}
           </Typography>
-          <Hidden xsDown>
+          <Hidden smDown>
             {pageLinks.map((link) => (
               <Link href={link.url} key={link.url}>
                 <a href={link.url} title={t(link.key)}>
@@ -85,23 +85,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
               </Link>
             ))}
           </Hidden>
-          <IconButton aria-controls='language-menu' color='inherit' title='Change language' onClick={openLangMenu}>
-            <img src={`/images/flag-${language}.png`} alt='lang' className={classes.flag} />
-          </IconButton>
-          <Menu
-            id='language-menu'
-            anchorEl={langAnchorEl}
-            keepMounted
-            open={Boolean(langAnchorEl)}
-            onClose={closeLangMenu}>
-            {languages.map((lang) => (
-              <MenuItem onClick={() => changeLang(lang.code)} key={lang.code}>
-                <img src={`/images/flag-${lang.code}.png`} alt={lang.title} className={classes.langFlag} />
-                {lang.title}
-              </MenuItem>
-            ))}
-          </Menu>
-          <Hidden xsDown>
+          <Hidden smDown>
             <Link href='/signin' key='signin'>
               <a href='/signin' title='Sign In'>
                 <Button
@@ -115,13 +99,25 @@ export const Layout = (props: LayoutProps): JSX.Element => {
               </a>
             </Link>
           </Hidden>
-          <Hidden smUp>
-            <IconButton aria-controls='menu' color='inherit' title='Open Menu' onClick={openMenu}>
+          <Hidden mdUp>
+            <IconButton role='button' title='Open Menu' color='inherit' onClick={() => setOpenDrawer(!openDrawer)}>
               <MenuIcon />
             </IconButton>
           </Hidden>
+          <IconButton role='button' title='Change language' color='inherit' onClick={openLangMenu}>
+            <img src={`/images/flag-${language}.png`} alt='lang' className={classes.flag} />
+          </IconButton>
+          <Menu anchorEl={langAnchorEl} keepMounted open={Boolean(langAnchorEl)} role='button' onClose={closeLangMenu}>
+            {languages.map((lang) => (
+              <MenuItem onClick={() => changeLang(lang.code)} key={lang.code}>
+                <img src={`/images/flag-${lang.code}.png`} alt={lang.title} className={classes.langFlag} />
+                {lang.title}
+              </MenuItem>
+            ))}
+          </Menu>
         </Toolbar>
       </AppBar>
+      <Drawer menuItems={pageLinks} open={openDrawer} setOpen={setOpenDrawer} />
       <div className={classes.root}>{children}</div>
     </BaseLayout>
   );
