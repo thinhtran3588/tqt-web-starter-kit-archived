@@ -11,13 +11,10 @@ export const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  pageLinkButton: {
+  linkButton: {
     padding: theme.spacing(2.5),
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4),
-  },
-  loginIcon: {
-    color: '#fff',
   },
   flag: {
     height: theme.spacing(3),
