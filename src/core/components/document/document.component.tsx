@@ -1,7 +1,7 @@
 import React from 'react';
 import Document, {Html, Head, Main, NextScript, DocumentContext} from 'next/document';
 import {ServerStyleSheets} from '@material-ui/core/styles';
-import {theme} from '@app/core/theme';
+import {config} from '@app/core/config';
 
 export class MyDocument extends Document {
   // eslint-disable-next-line class-methods-use-this
@@ -9,9 +9,6 @@ export class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          {/* PWA primary color */}
-          <meta name='theme-color' content={theme.palette.primary.main} />
-          <link rel='icon' href='/favicon.ico' />
           <link
             rel='preload'
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
@@ -19,6 +16,29 @@ export class MyDocument extends Document {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onLoad={"this.onload=null;this.rel='stylesheet'" as any}
           />
+          <meta name='application-name' content={config.appName} />
+          <meta name='apple-mobile-web-app-capable' content='yes' />
+          <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+          <meta name='apple-mobile-web-app-title' content={config.appName} />
+          <meta name='description' content={config.appDescription} />
+          <meta name='format-detection' content='telephone=no' />
+          <meta name='mobile-web-app-capable' content='yes' />
+          <meta name='theme-color' content='#FFFFFF' />
+          <link rel='apple-touch-icon' sizes='180x180' href='/images/icons/apple-touch-icon-180x180.png' />
+          <link rel='manifest' href='/manifest.json' />
+          <link rel='shortcut icon' href='/images/icons/favicon.ico' />
+          <meta name='twitter:card' content='summary' />
+          <meta name='twitter:url' content={config.domain} />
+          <meta name='twitter:title' content='PWA App' />
+          <meta name='twitter:description' content='Best PWA App in the world' />
+          <meta name='twitter:image' content={`${config.domain}/images/icons/android-chrome-192x192.png`} />
+          <meta name='twitter:creator' content='@DavidWShadow' />
+          <meta property='og:type' content='website' />
+          <meta property='og:title' content='PWA App' />
+          <meta property='og:description' content='Best PWA App in the world' />
+          <meta property='og:site_name' content={config.appName} />
+          <meta property='og:url' content={config.domain} />
+          <meta property='og:image' content={`${config.domain}/images/icons/apple-touch-icon-180x180.png`} />
         </Head>
         <body>
           <Main />

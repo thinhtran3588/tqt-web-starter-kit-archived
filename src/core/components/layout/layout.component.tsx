@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, {useState} from 'react';
 import Link from 'next/link';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,25 +11,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Hidden from '@material-ui/core/Hidden';
 import InputIcon from '@material-ui/icons/Input';
 import MenuIcon from '@material-ui/icons/Menu';
-import {BaseLayout} from '../base-layout/base-layout.component';
+import {config} from '@app/core/config';
+import {BaseLayout, BaseLayoutProps} from '../base-layout/base-layout.component';
 import {Drawer} from './components/drawer/drawer.component';
 import {useStyles} from './layout.styles';
 
-export interface LayoutProps {
-  children?: React.ReactNode;
-  title?: string;
-  description?: string;
-}
-
-export const Layout = (props: LayoutProps): JSX.Element => {
+export const Layout = (props: BaseLayoutProps): JSX.Element => {
+  const {children, ...other} = props;
   const language = 'en';
   const t = (key: string): string => key;
-  const appName = 'TQT';
-  const {
-    title = appName,
-    description = 'The starter kit written in Next.js, React and Typescript with <3',
-    children,
-  } = props;
+  const {appName} = config;
   const classes = useStyles();
   const pageLinks = [
     {url: '/', key: 'home', text: 'home'},
@@ -63,12 +55,12 @@ export const Layout = (props: LayoutProps): JSX.Element => {
   };
 
   return (
-    <BaseLayout title={title} description={description}>
+    <BaseLayout {...other}>
       <AppBar position='static' variant='elevation'>
         <Toolbar>
           <Link href='/'>
             <a href='/'>
-              <img src='/images/app-icon.png' alt='TQT Logo' className={classes.logo} />
+              <img src='/images/icons/app-icon.png' alt='TQT Logo' className={classes.logo} />
             </a>
           </Link>
           <Typography variant='h6' className={classes.title}>

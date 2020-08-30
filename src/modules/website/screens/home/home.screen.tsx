@@ -7,7 +7,7 @@ interface HomeScreenProps {}
 export const HomeScreen = (_props: HomeScreenProps): JSX.Element => {
   const t = (key: string): string => key;
   return (
-    <Layout title='Home'>
+    <Layout title='Home' description='Home page'>
       <Typography variant='h6'>{t('common:home')}</Typography>
     </Layout>
   );
