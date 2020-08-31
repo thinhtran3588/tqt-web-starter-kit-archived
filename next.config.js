@@ -1,4 +1,5 @@
 const withPWA = require('next-pwa');
+const config = require('./src/core/config.json');
 
 module.exports = withPWA({
   pwa: {
@@ -8,5 +9,14 @@ module.exports = withPWA({
     scope: '/',
     sw: 'service-worker.js',
   },
+  redirects() {
+    return [
+      {
+        source: '/',
+        destination: `/${config.defaultLng}`,
+        permanent: true
+      }
+    ];
+  }
   // other next config
 });

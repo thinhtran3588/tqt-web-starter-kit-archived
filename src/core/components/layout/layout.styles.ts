@@ -19,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
   flag: {
     height: theme.spacing(3),
   },
-  langFlag: {
+  lngFlag: {
     height: theme.spacing(3),
     paddingRight: theme.spacing(2),
   },

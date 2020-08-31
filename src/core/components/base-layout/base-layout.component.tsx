@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import {config} from '@app/core/config';
+import config from '@app/core/config.json';
 
 export interface BaseLayoutProps {
   children?: React.ReactNode;

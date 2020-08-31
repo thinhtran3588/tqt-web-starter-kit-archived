@@ -1,9 +1,9 @@
 import React from 'react';
-import Link from 'next/link';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import {Link} from '@app/core/components/link/link.component';
 import {useStyles} from './drawer.styles';
 
 export interface DrawerProps {
@@ -12,7 +12,7 @@ export interface DrawerProps {
   menuItems: {
     url: string;
     key: string;
-    text: string;
+    title: string;
   }[];
 }
 
@@ -33,11 +33,9 @@ export const Drawer = (props: DrawerProps): JSX.Element => {
       <List className={classes.list}>
         {menuItems.map((item) => (
           <Link href={item.url} key={item.key}>
-            <a href={item.url}>
-              <ListItem button>
-                <ListItemText primary={item.text} />
-              </ListItem>
-            </a>
+            <ListItem button>
+              <ListItemText primary={item.title} />
+            </ListItem>
           </Link>
         ))}
       </List>

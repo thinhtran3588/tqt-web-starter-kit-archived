@@ -1,5 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import {getStaticPaths, getStaticProps} from '@app/core/i18n/i18n';
 import {AuthLayout} from '@app/core/components/auth-layout/auth-layout.component';
 
 export const SignInScreen = (): JSX.Element => {
@@ -9,3 +10,5 @@ export const SignInScreen = (): JSX.Element => {
     </AuthLayout>
   );
 };
+
+export {getStaticPaths, getStaticProps};
