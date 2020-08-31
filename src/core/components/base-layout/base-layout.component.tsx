@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
+import {useI18n} from 'next-localization';
 import config from '@app/core/config.json';
+import {languageMap} from '@app/core/i18n/i18n';
 
 export interface BaseLayoutProps {
   children?: React.ReactNode;
@@ -18,10 +20,12 @@ export const BaseLayout = (props: BaseLayoutProps): JSX.Element => {
     imageUrl = `${config.domain}/images/icons/android-chrome-192x192.png`,
     children,
   } = props;
+  const i18n = useI18n();
 
   return (
     <>
       <Head>
+        <meta httpEquiv='content-language' content={languageMap[i18n.locale() || config.defaultLng].content} />
         <title>{title}</title>
         <meta name='Description' content={description} />
         <meta name='twitter:card' content='summary' />

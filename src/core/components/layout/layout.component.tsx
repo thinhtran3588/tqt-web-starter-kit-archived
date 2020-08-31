@@ -26,10 +26,10 @@ export const Layout = (props: BaseLayoutProps): JSX.Element => {
   const {appName} = config;
   const classes = useStyles();
   const pages = [
-    {url: '/', key: 'home', title: t('common.home')},
-    {url: '/blogs', key: 'blogs', title: t('common.blogs')},
-    {url: '/about', key: 'about', title: t('common.about')},
-    {url: '/form', key: 'form', title: t('common.form')},
+    {url: '/', key: 'home', title: t('nav.home')},
+    {url: '/blogs', key: 'blogs', title: t('nav.blogs')},
+    {url: '/about', key: 'about', title: t('nav.about')},
+    {url: '/form', key: 'form', title: t('nav.form')},
   ];
   const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -68,23 +68,27 @@ export const Layout = (props: BaseLayoutProps): JSX.Element => {
             ))}
           </Hidden>
           <Hidden smDown>
-            <Link href='/signin' key='signin'>
+            <Link href='/signin'>
               <Button
                 variant='text'
                 color='inherit'
                 size='large'
                 className={classes.linkButton}
                 startIcon={<InputIcon />}>
-                {t('common.signIn')}
+                {t('nav.signIn')}
               </Button>
             </Link>
           </Hidden>
           <Hidden mdUp>
-            <IconButton role='button' title='Open Menu' color='inherit' onClick={() => setOpenDrawer(!openDrawer)}>
+            <IconButton
+              role='button'
+              title={t('nav.openMenu')}
+              color='inherit'
+              onClick={() => setOpenDrawer(!openDrawer)}>
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <IconButton role='button' title='Change language' color='inherit' onClick={openLangMenu}>
+          <IconButton role='button' title={t('nav.changeLanguage')} color='inherit' onClick={openLangMenu}>
             <img src={`/images/flag-${locale() || config.defaultLng}.png`} alt='lang' className={classes.flag} />
           </IconButton>
           <Menu anchorEl={langAnchorEl} keepMounted open={Boolean(langAnchorEl)} role='button' onClose={closeLangMenu}>

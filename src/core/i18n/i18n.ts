@@ -1,7 +1,10 @@
 import type {GetStaticProps, GetStaticPaths} from 'next';
 
 export const languages = ['vi', 'en'];
-export const languageMap: {[lng: string]: {name: string}} = {vi: {name: 'Tiếng Việt'}, en: {name: 'English'}};
+export const languageMap: {[lng: string]: {name: string; content: string}} = {
+  vi: {name: 'Tiếng Việt', content: 'vi-VN'},
+  en: {name: 'English', content: 'en-US'},
+};
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
   const {default: lngDict = {}} = await import(`./locales/${params.lng}.json`);

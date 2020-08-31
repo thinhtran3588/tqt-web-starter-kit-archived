@@ -10,7 +10,7 @@ export const HomeScreen = (_props: HomeScreenProps): JSX.Element => {
   const {t} = useI18n();
   return (
     <Layout title='Home' description='Home page'>
-      <Typography variant='h6'>{t('common.home')}</Typography>
+      <Typography variant='h6'>{t('nav.home')}</Typography>
     </Layout>
   );
 };
