@@ -6,8 +6,10 @@ import config from '@app/core/config.json';
 export class MyDocument extends Document {
   // eslint-disable-next-line class-methods-use-this
   render(): JSX.Element {
+    // eslint-disable-next-line no-underscore-dangle
+    const lng = (this.props.__NEXT_DATA__.query.lng as string) || 'en';
     return (
-      <Html lang='en'>
+      <Html lang={lng}>
         <Head>
           <link
             rel='preload'
