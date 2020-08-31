@@ -1,5 +1,5 @@
 .next
 vercel
-next.config.js
+next.config*.js
 workbox-*.js
 service-worker.js
