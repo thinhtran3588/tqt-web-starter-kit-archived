@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -8,10 +8,23 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {getStaticPaths, getStaticProps} from '@app/core/i18n/i18n';
 import {AuthLayout} from '@app/core/components/auth-layout/auth-layout.component';
 import {Link} from '@app/core/components/link/link.component';
+import type {AuthService} from '@auth/interfaces/auth.service.interface';
 import {useStyles} from './sign-in.styles';
 
 export const SignInScreen = (): JSX.Element => {
   const classes = useStyles();
+  const [authService, setAuthService] = useState<AuthService>();
+
+  useEffect(() => {
+    import('@auth/services/auth.service').then((service: AuthService) => {
+      setAuthService(service);
+    });
+  }, []);
+
+  const signIn = async (): Promise<void> => {
+    await authService.signInEmail({email: 'quangthinhtran3588@gmail.com', password: 'Abc@123'});
+  };
+
   return (
     <AuthLayout title='Sign In'>
       <form className={classes.form} noValidate>
@@ -38,7 +51,7 @@ export const SignInScreen = (): JSX.Element => {
           autoComplete='current-password'
         />
         <FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Remember me' />
-        <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>
+        <Button fullWidth variant='contained' color='primary' className={classes.submit} onClick={signIn}>
           Sign In
         </Button>
         <Grid container>

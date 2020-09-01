@@ -1,6 +1,6 @@
 declare module 'next-localization' {
   export function useI18n(): {
-    t: (key: string, params?: {[id: string]: string}) => string;
+    t: (key: string, params?: {[id: string]: unknown}) => string;
     locale: () => string;
   };
 
