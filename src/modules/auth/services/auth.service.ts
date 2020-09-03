@@ -64,7 +64,7 @@ export const signInFacebook = async (): Promise<boolean> => {
       return false;
     }
     if (err.code === 'auth/user-disabled') {
-      throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+      throw new AppError('USER_DISABLED', 'auth.userDisabledError');
     }
     throw err;
   }
@@ -84,7 +84,7 @@ export const signInGoogle = async (): Promise<boolean> => {
       return false;
     }
     if (err.code === 'auth/user-disabled') {
-      throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+      throw new AppError('USER_DISABLED', 'auth.userDisabledError');
     }
     throw err;
   }
@@ -104,7 +104,7 @@ export const signInApple = async (): Promise<boolean> => {
       return false;
     }
     if (err.code === 'auth/user-disabled') {
-      throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+      throw new AppError('USER_DISABLED', 'auth.userDisabledError');
     }
     throw err;
   }
