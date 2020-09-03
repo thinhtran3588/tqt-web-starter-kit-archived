@@ -12,9 +12,6 @@ export const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     flexGrow: 1,
   },
-  rightPanel: {
-    maxWidth: 600,
-  },
   formContainer: {
     width: '100%',
   },
