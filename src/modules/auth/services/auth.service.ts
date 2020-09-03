@@ -3,23 +3,6 @@ import 'firebase/auth';
 import {AppError} from '@app/core/exceptions/app-error';
 import type {SignUpEmailParams, SignInEmailParams} from '@auth/interfaces/auth.service.interface';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyCH_Hlb30OeTgvF-AcqMODNlfddghJNjwc',
-  authDomain: 'tqt-apps-staging.firebaseapp.com',
-  databaseURL: 'https://tqt-apps-staging.firebaseio.com',
-  projectId: 'tqt-apps-staging',
-  storageBucket: 'tqt-apps-staging.appspot.com',
-  messagingSenderId: '216990881783',
-  appId: '1:216990881783:web:a4ce455b6a5148957a00f2',
-  measurementId: 'G-8E6VTSTR06',
-};
-
-export const initialize = (): void => {
-  if (!firebase.apps || firebase.apps.length === 0) {
-    firebase.initializeApp(firebaseConfig);
-  }
-};
-
 export const signUpEmail = async (params: SignUpEmailParams): Promise<boolean> => {
   try {
     const {email, password} = params;

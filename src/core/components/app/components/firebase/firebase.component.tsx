@@ -15,7 +15,24 @@ export const Firebase = (): JSX.Element => {
   } = useDispatch<Dispatch>();
 
   useEffect(() => {
-    firebase.auth().languageCode = language;
+    const firebaseConfig = {
+      apiKey: 'AIzaSyCH_Hlb30OeTgvF-AcqMODNlfddghJNjwc',
+      authDomain: 'tqt-apps-staging.firebaseapp.com',
+      databaseURL: 'https://tqt-apps-staging.firebaseio.com',
+      projectId: 'tqt-apps-staging',
+      storageBucket: 'tqt-apps-staging.appspot.com',
+      messagingSenderId: '216990881783',
+      appId: '1:216990881783:web:a4ce455b6a5148957a00f2',
+      measurementId: 'G-8E6VTSTR06',
+    };
+
+    if (!firebase.apps || firebase.apps.length === 0) {
+      firebase.initializeApp(firebaseConfig);
+      firebase.auth().languageCode = language;
+    }
+    if (firebase.apps && firebase.apps.length > 0) {
+      firebase.auth().languageCode = language;
+    }
   }, [language]);
 
   useEffect(() => {

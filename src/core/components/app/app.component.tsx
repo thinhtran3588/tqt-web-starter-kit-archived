@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, {useEffect} from 'react';
+import React from 'react';
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
@@ -16,11 +16,6 @@ import {LoadingModal} from './components/loading-modal/loading-modal.component';
 const Firebase = dynamic(() => import('./components/firebase/firebase.component').then((mod) => mod.Firebase));
 
 export const App = ({Component, pageProps}: AppProps): JSX.Element => {
-  useEffect(() => {
-    import('@auth/services/auth.service').then(({initialize}) => {
-      initialize();
-    });
-  });
   return (
     <Provider store={store}>
       <Head>
