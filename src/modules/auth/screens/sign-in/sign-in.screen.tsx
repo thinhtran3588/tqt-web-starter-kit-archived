@@ -1,72 +1,37 @@
-import React, {useEffect, useState} from 'react';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, {useState} from 'react';
+import {useI18n} from 'next-localization';
+import SwipeableViews from 'react-swipeable-views';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import {getStaticPaths, getStaticProps} from '@app/core/i18n/i18n';
 import {AuthLayout} from '@app/core/components/auth-layout/auth-layout.component';
-import {Link} from '@app/core/components/link/link.component';
-import type {AuthService} from '@auth/interfaces/auth.service.interface';
-import {useStyles} from './sign-in.styles';
+import {EmailSignIn} from './components/email-sign-in/email-sign-in.component';
+import {EmailSignUp} from './components/email-sign-up/email-sign-up.component';
 
 export const SignInScreen = (): JSX.Element => {
-  const classes = useStyles();
-  const [authService, setAuthService] = useState<AuthService>();
-
-  useEffect(() => {
-    import('@auth/services/auth.service').then((service: AuthService) => {
-      setAuthService(service);
-    });
-  }, []);
-
-  const signIn = async (): Promise<void> => {
-    await authService.signInEmail({email: 'quangthinhtran3588@gmail.com', password: 'Abc@123'});
-  };
+  const {t} = useI18n();
+  const [tabIndex, setTabIndex] = useState(0);
 
   return (
-    <AuthLayout title='Sign In'>
-      <form className={classes.form} noValidate>
-        <TextField
-          variant='outlined'
-          margin='normal'
-          required
-          fullWidth
-          id='email'
-          label='Email Address'
-          name='email'
-          autoComplete='email'
-          autoFocus
-        />
-        <TextField
-          variant='outlined'
-          margin='normal'
-          required
-          fullWidth
-          name='password'
-          label='Password'
-          type='password'
-          id='password'
-          autoComplete='current-password'
-        />
-        <FormControlLabel control={<Checkbox value='remember' color='primary' />} label='Remember me' />
-        <Button fullWidth variant='contained' color='primary' className={classes.submit} onClick={signIn}>
-          Sign In
-        </Button>
-        <Grid container>
-          <Grid item xs>
-            <Link href='/recoverpassword'>
-              <Typography variant='body2'>Forgot password?</Typography>
-            </Link>
-          </Grid>
-          <Grid item>
-            <Link href='/sighup'>
-              <Typography variant='body2'>Don&apos;t have an account? Sign Up</Typography>
-            </Link>
-          </Grid>
-        </Grid>
-      </form>
+    <AuthLayout title={t('nav.signIn')}>
+      <Tabs
+        value={tabIndex}
+        onChange={(_event, newIndex) => setTabIndex(newIndex)}
+        indicatorColor='primary'
+        textColor='primary'
+        variant='fullWidth'>
+        <Tab label={t('auth.signIn')} id='tab-sign-in' aria-controls='tab-sign-in' autoCapitalize='false' />
+        <Tab label={t('auth.signUp')} id='tab-sign-up' aria-controls='tab-sign-up' />
+      </Tabs>
+      <SwipeableViews axis='x' index={tabIndex} onChangeIndex={setTabIndex}>
+        <div role='tabpanel' hidden={tabIndex !== 0} id='tab-panel-sign-in' aria-labelledby='tab-panel-sign-in'>
+          {tabIndex === 0 && <EmailSignIn />}
+        </div>
+        <div role='tabpanel' hidden={tabIndex !== 1} id='tab-panel-sign-up' aria-labelledby='tab-panel-sign-up'>
+          {tabIndex === 1 && <EmailSignUp />}
+        </div>
+      </SwipeableViews>
     </AuthLayout>
   );
 };

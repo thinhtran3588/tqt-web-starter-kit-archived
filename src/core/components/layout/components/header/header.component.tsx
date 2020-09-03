@@ -10,13 +10,14 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Hidden from '@material-ui/core/Hidden';
-import InputIcon from '@material-ui/icons/Input';
 import MenuIcon from '@material-ui/icons/Menu';
+import NoSsr from '@material-ui/core/NoSsr';
 import config from '@app/core/config.json';
 import {languages, languageMap} from '@app/core/i18n/i18n';
 import {Link} from '@app/core/components/link/link.component';
-import {useStyles} from './header.styles';
 import {Drawer} from '../drawer/drawer.component';
+import {useStyles} from './header.styles';
+import {UserInfo} from '../user-info/user-info.component';
 
 export const Header = (): JSX.Element => {
   const classes = useStyles();
@@ -30,7 +31,6 @@ export const Header = (): JSX.Element => {
     {url: '/form', key: 'form', title: t('nav.form')},
   ];
   const [openDrawer, setOpenDrawer] = useState(false);
-
   const [langAnchorEl, setLangAnchorEl] = useState(undefined);
 
   const openLangMenu = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
@@ -64,27 +64,9 @@ export const Header = (): JSX.Element => {
             </Link>
           ))}
         </Hidden>
-        <Hidden smDown>
-          <Link href='/signin'>
-            <Button
-              variant='text'
-              color='inherit'
-              size='large'
-              className={classes.linkButton}
-              startIcon={<InputIcon />}>
-              {t('nav.signIn')}
-            </Button>
-          </Link>
-        </Hidden>
-        <Hidden mdUp>
-          <IconButton
-            role='button'
-            title={t('nav.openMenu')}
-            color='inherit'
-            onClick={() => setOpenDrawer(!openDrawer)}>
-            <MenuIcon />
-          </IconButton>
-        </Hidden>
+        <NoSsr>
+          <UserInfo />
+        </NoSsr>
         <IconButton role='button' title={t('nav.changeLanguage')} color='inherit' onClick={openLangMenu}>
           <img src={`/images/flag-${locale() || config.defaultLng}.png`} alt='lang' className={classes.flag} />
         </IconButton>
@@ -96,6 +78,15 @@ export const Header = (): JSX.Element => {
             </MenuItem>
           ))}
         </Menu>
+        <Hidden mdUp>
+          <IconButton
+            role='button'
+            title={t('nav.openMenu')}
+            color='inherit'
+            onClick={() => setOpenDrawer(!openDrawer)}>
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
       </Toolbar>
       <Drawer menuItems={menuItems} open={openDrawer} setOpen={setOpenDrawer} />
     </AppBar>

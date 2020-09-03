@@ -29,7 +29,19 @@
     "wrongCredentialError": "Wrong credential"
   },
   "common": {
-    "unknownError": "Something wrong happened"
+    "back": "Back",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "confirmation": "Confirmation",
+    "error": "Error",
+    "hello": "Hello",
+    "invalid": "Invalid",
+    "noInternetConnection": "No Internet Connection",
+    "required": "Required",
+    "settings": "Settings",
+    "showPassword": "Show password",
+    "unknownError": "Something wrong happened",
+    "warning": "Warning"
   },
   "nav": {
     "about": "About",
@@ -38,6 +50,7 @@
     "form": "Form",
     "home": "Home",
     "openMenu": "Open Menu",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
   }
 }

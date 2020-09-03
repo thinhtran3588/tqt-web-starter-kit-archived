@@ -25,6 +25,7 @@ export const signUpEmail = async (params: SignUpEmailParams): Promise<boolean> =
     const {email, password} = params;
     // Create a new user in with the credential
     await firebase.auth().createUserWithEmailAndPassword(email, password);
+    // TODO: log request
   } catch (err) {
     if (err.code === 'auth/user-disabled') {
       throw new AppError('USER_DISABLED', 'auth.userDisabledError');
@@ -45,6 +46,7 @@ export const signInEmail = async (params: SignInEmailParams): Promise<boolean> =
     const {email, password} = params;
     // Sign the user in with the credential
     await firebase.auth().signInWithEmailAndPassword(email, password);
+    // TODO: log request
   } catch (err) {
     if (err.code === 'auth/user-disabled') {
       throw new AppError('USER_DISABLED', 'auth.userDisabledError');
@@ -58,4 +60,10 @@ export const signInEmail = async (params: SignInEmailParams): Promise<boolean> =
     throw err;
   }
   return true;
+};
+
+export const signOut = async (): Promise<void> => {
+  if (firebase.auth().currentUser) {
+    await firebase.auth().signOut();
+  }
 };

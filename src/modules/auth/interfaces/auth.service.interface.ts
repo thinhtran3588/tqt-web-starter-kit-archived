@@ -9,4 +9,5 @@ export interface AuthService {
   initialize: () => void;
   signUpEmail: (params: SignUpEmailParams) => Promise<boolean>;
   signInEmail: (params: SignInEmailParams) => Promise<boolean>;
+  signOut: () => Promise<void>;
 }

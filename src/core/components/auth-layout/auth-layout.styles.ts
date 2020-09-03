@@ -10,19 +10,19 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    flexGrow: 1,
+  },
+  rightPanel: {
+    maxWidth: 600,
+  },
+  formContainer: {
+    width: '100%',
   },
   paper: {
-    margin: theme.spacing(8, 4),
+    margin: theme.spacing(8, 6),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
   },
   avatar: {
     margin: theme.spacing(1),

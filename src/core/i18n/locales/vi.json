@@ -29,7 +29,19 @@
     "wrongCredentialError": "Thông tin đăng nhập sai"
   },
   "common": {
-    "unknownError": "Có lỗi xảy ra"
+    "back": "Quay lại",
+    "cancel": "Bỏ qua",
+    "confirm": "Xác nhận",
+    "confirmation": "Xác nhận",
+    "error": "Lỗi",
+    "hello": "Xin chào",
+    "invalid": "Không hợp lệ",
+    "noInternetConnection": "Không có kết nối mạng",
+    "required": "Bắt buộc",
+    "settings": "Cài đặt",
+    "showPassword": "Xem mật khẩu",
+    "unknownError": "Có lỗi xảy ra",
+    "warning": "Cảnh báo"
   },
   "nav": {
     "about": "Thông tin",
@@ -38,6 +50,7 @@
     "form": "Biểu mẫu",
     "home": "Trang chủ",
     "openMenu": "Mở menu",
-    "signIn": "Đăng nhập"
+    "signIn": "Đăng nhập",
+    "signOut": "Đăng xuất"
   }
 }

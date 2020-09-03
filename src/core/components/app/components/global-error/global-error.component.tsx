@@ -2,9 +2,11 @@
 import React, {useEffect} from 'react';
 import {useImmer} from 'use-immer';
 import {useI18n} from 'next-localization';
+import {useDispatch} from 'react-redux';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, {AlertProps} from '@material-ui/lab/Alert';
 import {AppError} from '@app/core/exceptions/app-error';
+import type {Dispatch} from '@app/stores/store';
 
 const Alert = (props: AlertProps): JSX.Element => {
   return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -13,6 +15,9 @@ const Alert = (props: AlertProps): JSX.Element => {
 export const GlobalError = (): JSX.Element => {
   const [errorState, setErrorState] = useImmer({open: false, message: ''});
   const {t} = useI18n();
+  const {
+    loading: {setLoading},
+  } = useDispatch<Dispatch>();
 
   useEffect(() => {
     const handleError = (err: AppError): void => {
@@ -34,13 +39,16 @@ export const GlobalError = (): JSX.Element => {
     };
     const promiseErrorHandler = (event: PromiseRejectionEvent): void => {
       handleError(event.reason);
+
+      setLoading(false);
+
       event.preventDefault();
     };
     window.addEventListener('unhandledrejection', promiseErrorHandler);
     return () => {
       window.removeEventListener('unhandledrejection', promiseErrorHandler);
     };
-  }, [setErrorState, t]);
+  }, [setErrorState, setLoading, t]);
 
   const close = (): void => {
     setErrorState((draft) => {
