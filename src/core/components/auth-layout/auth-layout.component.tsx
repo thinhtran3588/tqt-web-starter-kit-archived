@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
-import config from '@app/core/config.json';
+import {config} from '@app/core/config';
 import {BaseLayout, BaseLayoutProps} from '../base-layout/base-layout.component';
 import {useStyles} from './auth-layout.styles';
 import {LanguageSetting} from '../language-setting/language-setting.component';

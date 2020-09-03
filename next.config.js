@@ -1,5 +1,4 @@
 const withPWA = require('next-pwa');
-const config = require('./src/core/config.json');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -16,7 +15,7 @@ module.exports = withBundleAnalyzer(withPWA({
     return [
       {
         source: '/',
-        destination: `/${config.defaultLng}`,
+        destination: `/${process.env.NEXT_PUBLIC_DEFAULT_LNG}`,
         permanent: true
       }
     ];

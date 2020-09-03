@@ -1,7 +1,7 @@
 import React from 'react';
 import Document, {Html, Head, Main, NextScript, DocumentContext} from 'next/document';
 import {ServerStyleSheets} from '@material-ui/core/styles';
-import config from '@app/core/config.json';
+import {config} from '@app/core/config';
 
 export class MyDocument extends Document {
   // eslint-disable-next-line class-methods-use-this

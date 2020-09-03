@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import MenuIcon from '@material-ui/icons/Menu';
 import NoSsr from '@material-ui/core/NoSsr';
-import config from '@app/core/config.json';
+import {config} from '@app/core/config';
 import {LanguageSetting} from '@app/core/components/language-setting/language-setting.component';
 import {Link} from '@app/core/components/link/link.component';
 import {Drawer} from '../drawer/drawer.component';

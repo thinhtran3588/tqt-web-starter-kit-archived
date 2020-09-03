@@ -1,7 +1,7 @@
 import {useRouter as useNextRouter, NextRouter} from 'next/router';
 import {useI18n} from 'next-localization';
 import type {UrlObject} from 'url';
-import config from '@app/core/config.json';
+import {config} from '@app/core/config';
 
 interface TransitionOptions {
   shallow?: boolean;

@@ -35,3 +35,5 @@ yarn-error.log*
 
 workbox-*.js
 service-worker.js
+
+.env.local

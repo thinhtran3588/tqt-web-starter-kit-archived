@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import {useI18n} from 'next-localization';
-import config from '@app/core/config.json';
+import {config} from '@app/core/config';
 import {languageMap} from '@app/core/i18n/i18n';
 
 export interface BaseLayoutProps {

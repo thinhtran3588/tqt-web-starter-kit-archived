@@ -16,14 +16,14 @@ export const Firebase = (): JSX.Element => {
 
   useEffect(() => {
     const firebaseConfig = {
-      apiKey: 'AIzaSyCH_Hlb30OeTgvF-AcqMODNlfddghJNjwc',
-      authDomain: 'tqt-apps-staging.firebaseapp.com',
-      databaseURL: 'https://tqt-apps-staging.firebaseio.com',
-      projectId: 'tqt-apps-staging',
-      storageBucket: 'tqt-apps-staging.appspot.com',
-      messagingSenderId: '216990881783',
-      appId: '1:216990881783:web:a4ce455b6a5148957a00f2',
-      measurementId: 'G-8E6VTSTR06',
+      apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+      authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+      databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+      measurementId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
     };
 
     if (!firebase.apps || firebase.apps.length === 0) {

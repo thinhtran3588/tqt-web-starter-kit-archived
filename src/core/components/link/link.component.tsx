@@ -2,7 +2,7 @@
 import React from 'react';
 import NextLink, {LinkProps as NextLinkProps} from 'next/link';
 import {useI18n} from 'next-localization';
-import config from '@app/core/config.json';
+import {config} from '@app/core/config';
 
 export interface LinkProps extends NextLinkProps {
   children?: React.ReactNode;

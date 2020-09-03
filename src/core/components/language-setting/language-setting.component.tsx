@@ -5,7 +5,7 @@ import {useI18n} from 'next-localization';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import config from '@app/core/config.json';
+import {config} from '@app/core/config';
 import {languages, languageMap} from '@app/core/i18n/i18n';
 import {useStyles} from './language-setting.styles';
 
