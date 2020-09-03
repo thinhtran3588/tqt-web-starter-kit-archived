@@ -10,4 +10,7 @@ export interface AuthService {
   signUpEmail: (params: SignUpEmailParams) => Promise<boolean>;
   signInEmail: (params: SignInEmailParams) => Promise<boolean>;
   signOut: () => Promise<void>;
+  signInFacebook: () => Promise<boolean>;
+  signInGoogle: () => Promise<boolean>;
+  signInApple: () => Promise<boolean>;
 }

@@ -67,3 +67,63 @@ export const signOut = async (): Promise<void> => {
     await firebase.auth().signOut();
   }
 };
+
+export const signInFacebook = async (): Promise<boolean> => {
+  try {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    provider.addScope('public_profile');
+    provider.addScope('email');
+    await firebase.auth().signInWithPopup(provider);
+    // TODO: log request
+    // logAuthEvent('SIGN_IN', 'FACEBOOK');
+  } catch (err) {
+    if (err.code === 'auth/popup-closed-by-user') {
+      return false;
+    }
+    if (err.code === 'auth/user-disabled') {
+      throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+    }
+    throw err;
+  }
+  return true;
+};
+
+export const signInGoogle = async (): Promise<boolean> => {
+  try {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    await firebase.auth().signInWithPopup(provider);
+    // TODO: log request
+    // logAuthEvent('SIGN_IN', 'GOOGLE');
+  } catch (err) {
+    if (err.code === 'auth/popup-closed-by-user') {
+      return false;
+    }
+    if (err.code === 'auth/user-disabled') {
+      throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+    }
+    throw err;
+  }
+  return true;
+};
+
+export const signInApple = async (): Promise<boolean> => {
+  try {
+    const provider = new firebase.auth.OAuthProvider('apple.com');
+    provider.addScope('name');
+    provider.addScope('email');
+    await firebase.auth().signInWithPopup(provider);
+    // TODO: log request
+    // logAuthEvent('SIGN_IN', 'APPLE');
+  } catch (err) {
+    if (err.code === 'auth/popup-closed-by-user') {
+      return false;
+    }
+    if (err.code === 'auth/user-disabled') {
+      throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+    }
+    throw err;
+  }
+  return true;
+};

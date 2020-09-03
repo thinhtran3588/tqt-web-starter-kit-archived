@@ -8,6 +8,7 @@ import {getStaticPaths, getStaticProps} from '@app/core/i18n/i18n';
 import {AuthLayout} from '@app/core/components/auth-layout/auth-layout.component';
 import {EmailSignIn} from './components/email-sign-in/email-sign-in.component';
 import {EmailSignUp} from './components/email-sign-up/email-sign-up.component';
+import {SocialSignIn} from './components/social-sign-in/social-sign-in.component';
 
 export const SignInScreen = (): JSX.Element => {
   const {t} = useI18n();
@@ -32,6 +33,7 @@ export const SignInScreen = (): JSX.Element => {
           {tabIndex === 1 && <EmailSignUp />}
         </div>
       </SwipeableViews>
+      <SocialSignIn />
     </AuthLayout>
   );
 };
