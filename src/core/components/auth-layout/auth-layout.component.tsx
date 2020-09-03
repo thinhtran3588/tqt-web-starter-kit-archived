@@ -8,10 +8,12 @@ import Paper from '@material-ui/core/Paper';
 import config from '@app/core/config.json';
 import {BaseLayout, BaseLayoutProps} from '../base-layout/base-layout.component';
 import {useStyles} from './auth-layout.styles';
+import {LanguageSetting} from '../language-setting/language-setting.component';
 
 export const AuthLayout = (props: BaseLayoutProps): JSX.Element => {
   const {children, ...other} = props;
   const classes = useStyles();
+
   return (
     <BaseLayout {...other}>
       <Grid container component='main' className={classes.root}>
@@ -22,7 +24,10 @@ export const AuthLayout = (props: BaseLayoutProps): JSX.Element => {
           <div className={classes.paper}>
             <img src='/images/icons/app-logo.png' alt='TQT Logo' className={classes.logo} />
             <Box className={classes.formContainer}>{children}</Box>
-            <Box mt={5}>
+            <Box>
+              <LanguageSetting />
+            </Box>
+            <Box>
               <Typography variant='body2' color='textSecondary' align='center'>
                 {`Copyright © ${config.author} ${new Date().getFullYear()}`}
               </Typography>

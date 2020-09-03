@@ -56,7 +56,7 @@ export const UserInfo = (): JSX.Element => {
         </>
       )}
       {!auth.isSignedIn && (
-        <Link href='/signin'>
+        <Link href='/sign-in'>
           <Button variant='text' color='inherit' size='large' className={classes.linkButton} startIcon={<InputIcon />}>
             {t('nav.signIn')}
           </Button>
