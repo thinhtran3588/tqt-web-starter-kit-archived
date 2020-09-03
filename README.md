@@ -1,6 +1,8 @@
 This is a web stater kit project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-View demo at [starterkit.thinhtran.pro](https://starterkit.thinhtran.pro/en)
+Master branche demo: [starterkit.thinhtran.pro](https://starterkit.thinhtran.pro/en)
+
+Dev branch demo: [starterkitdev.thinhtran.pro](https://starterkitdev.thinhtran.pro/en)
 
 ## Getting Started
 
