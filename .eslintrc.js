@@ -1,9 +1,10 @@
 module.exports = {
   root: true,
-  extends: ['airbnb', 'airbnb/hooks', 'prettier'],
+  extends: ['airbnb', 'airbnb/hooks', 'prettier', 'prettier/@typescript-eslint'],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'no-null'],
+  plugins: ['@typescript-eslint', 'no-null', 'prettier'],
   rules: {
+    'prettier/prettier': ['error', {'no-inline-styles': true}],
     'no-null/no-null': ['error'],
     'react/jsx-filename-extension': ['error', {extensions: ['.tsx']}],
     'import/extensions': [
