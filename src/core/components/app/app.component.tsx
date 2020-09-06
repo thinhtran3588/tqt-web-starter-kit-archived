@@ -3,13 +3,14 @@ import React from 'react';
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import {Provider} from 'react-redux';
 import {I18nProvider} from 'next-localization';
 import {ThemeProvider} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import NoSsr from '@material-ui/core/NoSsr';
 import {theme} from '@app/core/theme';
 import {store} from '@app/stores/store';
-import {Provider} from 'react-redux';
+import {NotificationProvider} from '@app/core/contexts/notification.context';
 import {GlobalError} from './components/global-error/global-error.component';
 import {LoadingModal} from './components/loading-modal/loading-modal.component';
 
@@ -26,13 +27,15 @@ export const App = ({Component, pageProps}: AppProps): JSX.Element => {
       </Head>
       <ThemeProvider theme={theme}>
         <I18nProvider lngDict={pageProps.lngDict} locale={pageProps.lng}>
-          <Component {...pageProps} />
-          <NoSsr>
-            <CssBaseline />
-            <GlobalError />
-            <LoadingModal />
-            <Firebase />
-          </NoSsr>
+          <NotificationProvider>
+            <Component {...pageProps} />
+            <NoSsr>
+              <CssBaseline />
+              <GlobalError />
+              <LoadingModal />
+              <Firebase />
+            </NoSsr>
+          </NotificationProvider>
         </I18nProvider>
       </ThemeProvider>
     </Provider>

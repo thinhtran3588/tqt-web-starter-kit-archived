@@ -110,3 +110,16 @@ export const signInApple = async (): Promise<boolean> => {
   }
   return true;
 };
+
+export const sendPasswordResetEmail = async (email: string): Promise<void> => {
+  try {
+    await firebase.auth().sendPasswordResetEmail(email);
+    // TODO: log request
+    // logAuthEvent(EVENT_NAME.RECOVER_PASSWORD);
+  } catch (err) {
+    if (err.code === 'auth/user-not-found') {
+      return;
+    }
+    throw err;
+  }
+};

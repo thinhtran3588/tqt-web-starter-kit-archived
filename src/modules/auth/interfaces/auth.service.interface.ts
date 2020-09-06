@@ -13,4 +13,5 @@ export interface AuthService {
   signInFacebook: () => Promise<boolean>;
   signInGoogle: () => Promise<boolean>;
   signInApple: () => Promise<boolean>;
+  sendPasswordResetEmail: (email: string) => Promise<void>;
 }

@@ -1,5 +1,6 @@
 {
   "auth": {
+    "backToSignIn": "Quay lại đăng nhập",
     "email": "Email",
     "emailAlreadyInUseError": "Email đã được sử dụng",
     "forgotPassword": "Quên mật khẩu?",
@@ -17,6 +18,7 @@
     "recoverPassword": "Khôi phục mật khẩu",
     "requestHasBeenSent": "Yêu cầu đã được gửi đi. Vui lòng kiểm tra hòm thư {{email}}",
     "send": "Gửi",
+    "sendPasswordRecoveryEmail": "Gửi email khôi phục mật khẩu",
     "sendVerificationCode": "Gửi mã xác nhận",
     "signIn": "Đăng nhập",
     "signInWithPhoneNo": "Đăng nhập với số điện thoại",
@@ -47,6 +49,7 @@
     "about": "Thông tin",
     "blogs": "Bài viết",
     "changeLanguage": "Đổi ngôn ngữ",
+    "forgotPassword": "Quên mật khẩu",
     "form": "Biểu mẫu",
     "home": "Trang chủ",
     "openMenu": "Mở menu",

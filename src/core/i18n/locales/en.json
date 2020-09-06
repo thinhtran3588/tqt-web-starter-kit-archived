@@ -1,5 +1,6 @@
 {
   "auth": {
+    "backToSignIn": "Back to Sign in",
     "email": "Email",
     "emailAlreadyInUseError": "Email already in use",
     "forgotPassword": "Forgot password?",
@@ -17,6 +18,7 @@
     "recoverPassword": "Recover password",
     "requestHasBeenSent": "Request has been sent. Please check your mailbox {{email}}",
     "send": "Send",
+    "sendPasswordRecoveryEmail": "Send password recovery email",
     "sendVerificationCode": "Send verification code",
     "signIn": "Sign in",
     "signInWithPhoneNo": "Sign in with phone no",
@@ -47,6 +49,7 @@
     "about": "About",
     "blogs": "Blogs",
     "changeLanguage": "Change Language",
+    "forgotPassword": "Forgot Password",
     "form": "Form",
     "home": "Home",
     "openMenu": "Open Menu",
