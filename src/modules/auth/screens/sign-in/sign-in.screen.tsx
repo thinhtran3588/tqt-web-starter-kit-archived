@@ -9,8 +9,10 @@ import {AuthLayout} from '@app/core/components/auth-layout/auth-layout.component
 import {EmailSignIn} from './components/email-sign-in/email-sign-in.component';
 import {EmailSignUp} from './components/email-sign-up/email-sign-up.component';
 import {SocialSignIn} from './components/social-sign-in/social-sign-in.component';
+import {useStyles} from './sign-in.styles';
 
 export const SignInScreen = (): JSX.Element => {
+  const classes = useStyles();
   const {t} = useI18n();
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -22,8 +24,8 @@ export const SignInScreen = (): JSX.Element => {
         indicatorColor='primary'
         textColor='primary'
         variant='fullWidth'>
-        <Tab label={t('auth.signIn')} id='tab-sign-in' aria-controls='tab-sign-in' autoCapitalize='false' />
-        <Tab label={t('auth.signUp')} id='tab-sign-up' aria-controls='tab-sign-up' />
+        <Tab label={t('auth.signIn')} id='tab-sign-in' aria-controls='tab-sign-in' className={classes.tab} />
+        <Tab label={t('auth.signUp')} id='tab-sign-up' aria-controls='tab-sign-up' className={classes.tab} />
       </Tabs>
       <SwipeableViews axis='x' index={tabIndex} onChangeIndex={setTabIndex}>
         <div role='tabpanel' hidden={tabIndex !== 0} id='tab-panel-sign-in' aria-labelledby='tab-panel-sign-in'>
