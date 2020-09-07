@@ -5,7 +5,7 @@ import SwipeableViews from 'react-swipeable-views';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import {getStaticPaths, getStaticProps} from '@app/core/i18n/i18n';
+import {getStaticPaths, buildGetStaticProps} from '@app/core/i18n/i18n';
 import {AuthLayout} from '@app/core/components/auth-layout/auth-layout.component';
 import {EmailSignIn} from './components/email-sign-in/email-sign-in.component';
 import {EmailSignUp} from './components/email-sign-up/email-sign-up.component';
@@ -41,4 +41,5 @@ export const SignInScreen = (): JSX.Element => {
   );
 };
 
+const getStaticProps = buildGetStaticProps(['common', 'nav', 'auth']);
 export {getStaticPaths, getStaticProps};

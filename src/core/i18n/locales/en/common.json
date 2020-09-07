@@ -1,0 +1,16 @@
+{
+  "back": "Back",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "confirmation": "Confirmation",
+  "error": "Error",
+  "hello": "Hello",
+  "invalid": "Invalid",
+  "noInternetConnection": "No Internet Connection",
+  "noOptions": "No options",
+  "required": "Required",
+  "settings": "Settings",
+  "showPassword": "Show password",
+  "unknownError": "Something wrong happened",
+  "warning": "Warning"
+}

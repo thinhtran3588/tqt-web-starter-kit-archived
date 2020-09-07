@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {useState, useEffect} from 'react';
 import {useI18n} from 'next-localization';
-import {getStaticPaths, getStaticProps} from '@app/core/i18n/i18n';
+import {getStaticPaths, buildGetStaticProps} from '@app/core/i18n/i18n';
 import * as Yup from 'yup';
 import Typography from '@material-ui/core/Typography';
 import {useNotification} from '@app/core/contexts/notification.context';
@@ -76,4 +76,5 @@ export const ForgotPasswordScreen = (): JSX.Element => {
   );
 };
 
+const getStaticProps = buildGetStaticProps(['common', 'nav', 'auth']);
 export {getStaticPaths, getStaticProps};

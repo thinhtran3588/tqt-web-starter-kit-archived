@@ -6,7 +6,28 @@ export const languageMap: {[lng: string]: {name: string; content: string}} = {
   en: {name: 'English', content: 'en-US'},
 };
 
-export const getStaticProps: GetStaticProps = async ({params}) => {
+export const buildGetStaticProps = (namespaces: string[]): GetStaticProps => {
+  return async (props) => {
+    const {params} = props;
+    const lngDict = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const namespace of namespaces) {
+      // eslint-disable-next-line no-await-in-loop
+      lngDict[namespace] = (await import(`./locales/${params.lng}/${namespace}.json`)).default;
+    }
+
+    return {
+      props: {lng: params.lng, lngDict},
+      // Next.js will attempt to re-generate the page:
+      // - When a request comes in
+      // - At most once every second
+      revalidate: 1,
+    };
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (props) => {
+  const {params} = props;
   const {default: lngDict = {}} = await import(`./locales/${params.lng}.json`);
 
   return {

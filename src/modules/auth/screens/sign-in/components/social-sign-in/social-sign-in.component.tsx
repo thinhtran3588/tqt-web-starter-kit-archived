@@ -52,13 +52,13 @@ export const SocialSignIn = (): JSX.Element => {
   };
   return (
     <Box className={classes.container}>
-      <IconButton role='button' title={t('auth.loginFacebook')} color='inherit' onClick={() => signIn('FACEBOOK')}>
+      <IconButton role='button' title={t('auth.signInFacebook')} color='inherit' onClick={() => signIn('FACEBOOK')}>
         <FacebookIcon color='primary' className={classes.socialIcon} />
       </IconButton>
-      <IconButton role='button' title={t('auth.loginFacebook')} color='inherit' onClick={() => signIn('GOOGLE')}>
+      <IconButton role='button' title={t('auth.signInGoogle')} color='inherit' onClick={() => signIn('GOOGLE')}>
         <img src='/images/icons/google-icon.png' alt='Google Icon' className={classes.socialIcon} />
       </IconButton>
-      <IconButton role='button' title={t('auth.loginApple')} color='inherit' onClick={() => signIn('APPLE')}>
+      <IconButton role='button' title={t('auth.signInApple')} color='inherit' onClick={() => signIn('APPLE')}>
         <AppleIcon className={classes.socialIcon} />
       </IconButton>
     </Box>

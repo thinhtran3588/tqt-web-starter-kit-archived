@@ -85,6 +85,11 @@ export const EmailSignIn = (): JSX.Element => {
           {t('auth.forgotPassword')}
         </Button>
       </Link>
+      <Link href='/'>
+        <Button tabIndex={-1} variant='text'>
+          {t('auth.backToHome')}
+        </Button>
+      </Link>
     </form>
   );
 };

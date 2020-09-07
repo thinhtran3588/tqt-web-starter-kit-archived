@@ -21,14 +21,10 @@ export const AuthLayout = (props: BaseLayoutProps): JSX.Element => {
           <Box className={classes.paper}>
             <img src='/images/icons/app-logo.png' alt='TQT Logo' className={classes.logo} />
             <Box className={classes.formContainer}>{children}</Box>
-            <Box>
-              <LanguageSetting />
-            </Box>
-            <Box>
-              <Typography variant='body2' color='textSecondary' align='center'>
-                {`Copyright © ${config.author} ${new Date().getFullYear()}`}
-              </Typography>
-            </Box>
+            <LanguageSetting />
+            <Typography variant='body2' color='textSecondary' align='center'>
+              {`Copyright © ${config.author} ${new Date().getFullYear()}`}
+            </Typography>
           </Box>
         </Grid>
       </Grid>

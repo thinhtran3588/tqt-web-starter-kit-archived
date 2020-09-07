@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {useI18n} from 'next-localization';
 import * as Yup from 'yup';
 import {useImmer} from 'use-immer';
-import {getStaticPaths, getStaticProps} from '@app/core/i18n/i18n';
+import {getStaticPaths, buildGetStaticProps} from '@app/core/i18n/i18n';
 import {FormField, FormInput} from '@app/core/components/form-input/form-input.component';
 import {useRouter} from '@app/core/hooks/use-router';
 import {AuthService} from '@auth/interfaces/auth.service.interface';
@@ -192,4 +192,5 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
   );
 };
 
+const getStaticProps = buildGetStaticProps(['common', 'nav', 'auth']);
 export {getStaticPaths, getStaticProps};
