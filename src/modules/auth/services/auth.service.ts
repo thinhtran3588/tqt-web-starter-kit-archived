@@ -2,6 +2,9 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import {AppError} from '@app/core/exceptions/app-error';
 import type {SignUpEmailParams, SignInEmailParams} from '@auth/interfaces/auth.service.interface';
+import {sleep} from '@app/core/helpers/sleep';
+
+let confirmationResult: firebase.auth.ConfirmationResult | undefined;
 
 export const signUpEmail = async (params: SignUpEmailParams): Promise<boolean> => {
   try {
@@ -119,6 +122,60 @@ export const sendPasswordResetEmail = async (email: string): Promise<void> => {
   } catch (err) {
     if (err.code === 'auth/user-not-found') {
       return;
+    }
+    throw err;
+  }
+};
+
+export const registerRecaptchaVerifier = async (buttonId: string, onPress: () => void): Promise<void> => {
+  while (!firebase.apps || firebase.apps.length === 0) {
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(100);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (!(window as any).recaptchaVerifier) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).recaptchaVerifier = new firebase.auth.RecaptchaVerifier(buttonId, {
+      size: 'invisible',
+      callback(_response) {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+        onPress();
+      },
+    });
+  }
+};
+
+export const sendPhoneNoVerificationCode = async (phoneNo: string): Promise<void> => {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    confirmationResult = await firebase.auth().signInWithPhoneNumber(phoneNo, (window as any).recaptchaVerifier);
+  } catch (err) {
+    if (err.code === 'auth/user-disabled') {
+      throw new AppError('USER_DISABLED', 'auth.userDisabledError');
+    }
+    if (err.code === 'auth/quota-exceeded') {
+      throw new AppError('SMS_QUOTA_EXCEEDED', 'auth.smsQuotaExceedError');
+    }
+    if (err.code === 'auth/invalid-phone-number') {
+      throw new AppError('INVALID_PHONE_NO', 'auth.invalidPhoneNumberError');
+    }
+
+    throw err;
+  }
+};
+
+export const verifyCode = async (verificationCode: string): Promise<void> => {
+  try {
+    if (confirmationResult) {
+      await confirmationResult.confirm(verificationCode);
+      confirmationResult = undefined;
+      // TODO: log request
+      // logAuthEvent('SIGN_IN', 'PHONE_NO');
+    }
+  } catch (err) {
+    if (err.code === 'auth/invalid-verification-code') {
+      throw new AppError('INVALID_PHONE_NO', 'auth.invalidVerificationCodeError');
     }
     throw err;
   }

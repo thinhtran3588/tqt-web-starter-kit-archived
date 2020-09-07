@@ -77,7 +77,7 @@ export const EmailSignIn = (): JSX.Element => {
         <FormInput<FormData> key={field.fieldName} form={formik} field={field} />
       ))}
       <Button type='submit'>{t('auth.signIn')}</Button>
-      <Link href='/forgot-password'>
+      <Link href='/sign-in-phone-no'>
         <Button tabIndex={-1}>{t('auth.signInWithPhoneNo')}</Button>
       </Link>
       <Link href='/forgot-password'>

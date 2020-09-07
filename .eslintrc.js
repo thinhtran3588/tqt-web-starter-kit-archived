@@ -52,6 +52,7 @@ module.exports = {
     'react/jsx-closing-bracket-location': 'off', // let prettier formats the code
     'react/require-default-props': 'off',
     'react/jsx-wrap-multilines': 'off',
+    'react/jsx-one-expression-per-line': 'off',
   },
   settings: {
     'import/resolver': {

@@ -6,7 +6,6 @@ export interface SignUpEmailParams {
 export interface SignInEmailParams extends SignUpEmailParams {}
 
 export interface AuthService {
-  initialize: () => void;
   signUpEmail: (params: SignUpEmailParams) => Promise<boolean>;
   signInEmail: (params: SignInEmailParams) => Promise<boolean>;
   signOut: () => Promise<void>;
@@ -14,4 +13,7 @@ export interface AuthService {
   signInGoogle: () => Promise<boolean>;
   signInApple: () => Promise<boolean>;
   sendPasswordResetEmail: (email: string) => Promise<void>;
+  registerRecaptchaVerifier: (buttonId: string, onPress: () => void) => void;
+  sendPhoneNoVerificationCode: (phoneNo: string) => Promise<void>;
+  verifyCode: (verificationCode: string) => Promise<void>;
 }

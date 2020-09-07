@@ -4,4 +4,5 @@ export const config = {
   author: process.env.NEXT_PUBLIC_AUTHOR,
   defaultLng: process.env.NEXT_PUBLIC_DEFAULT_LNG,
   domain: process.env.NEXT_PUBLIC_DOMAIN,
+  defaultCountryCode: process.env.NEXT_PUBLIC_DEFAULT_COUNTRY_CODE,
 };

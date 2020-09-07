@@ -3,6 +3,7 @@ import Head from 'next/head';
 import {useI18n} from 'next-localization';
 import {config} from '@app/core/config';
 import {languageMap} from '@app/core/i18n/i18n';
+import {ErrorBoundary} from '../error-boundary/error-boundary.component';
 
 export interface BaseLayoutProps {
   children?: React.ReactNode;
@@ -23,7 +24,7 @@ export const BaseLayout = (props: BaseLayoutProps): JSX.Element => {
   const i18n = useI18n();
 
   return (
-    <>
+    <ErrorBoundary>
       <Head>
         <meta httpEquiv='content-language' content={languageMap[i18n.locale() || config.defaultLng].content} />
         <title>{title}</title>
@@ -42,6 +43,6 @@ export const BaseLayout = (props: BaseLayoutProps): JSX.Element => {
         <meta property='og:image' content={imageUrl} />
       </Head>
       {children}
-    </>
+    </ErrorBoundary>
   );
 };

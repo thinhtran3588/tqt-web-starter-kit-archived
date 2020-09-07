@@ -1,6 +1,7 @@
 {
   "auth": {
     "backToSignIn": "Back to Sign in",
+    "countryCode": "Country code",
     "email": "Email",
     "emailAlreadyInUseError": "Email already in use",
     "forgotPassword": "Forgot password?",
@@ -39,6 +40,7 @@
     "hello": "Hello",
     "invalid": "Invalid",
     "noInternetConnection": "No Internet Connection",
+    "noOptions": "No options",
     "required": "Required",
     "settings": "Settings",
     "showPassword": "Show password",
@@ -54,6 +56,7 @@
     "home": "Home",
     "openMenu": "Open Menu",
     "signIn": "Sign In",
+    "signInWithPhoneNo": "Sign in with phone no",
     "signOut": "Sign Out"
   }
 }

@@ -1,6 +1,7 @@
 {
   "auth": {
     "backToSignIn": "Quay lại đăng nhập",
+    "countryCode": "Mã quốc gia",
     "email": "Email",
     "emailAlreadyInUseError": "Email đã được sử dụng",
     "forgotPassword": "Quên mật khẩu?",
@@ -39,6 +40,7 @@
     "hello": "Xin chào",
     "invalid": "Không hợp lệ",
     "noInternetConnection": "Không có kết nối mạng",
+    "noOptions": "Không có kết quả",
     "required": "Bắt buộc",
     "settings": "Cài đặt",
     "showPassword": "Xem mật khẩu",
@@ -54,6 +56,7 @@
     "home": "Trang chủ",
     "openMenu": "Mở menu",
     "signIn": "Đăng nhập",
+    "signInWithPhoneNo": "Đăng nhập với số điện thoại",
     "signOut": "Đăng xuất"
   }
 }

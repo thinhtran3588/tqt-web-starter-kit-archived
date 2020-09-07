@@ -3,9 +3,15 @@ import React from 'react';
 import clsx from 'clsx';
 import {FormikContextType} from 'formik';
 import {TextInput, TextInputProps} from '../text-input/text-input.component';
+import {AutocompleteInput, AutocompleteInputProps} from '../autocomplete-input/autocomplete-input.component';
 import {useStyles} from './form-input.styles';
 
-export type FormField<Values> = (TextInputProps & {fieldType: 'text'}) & {fieldName?: keyof Values};
+export type FormField<Values> = (
+  | (TextInputProps & {fieldType: 'text'})
+  | (AutocompleteInputProps & {fieldType: 'autocomplete'})
+) & {
+  fieldName?: keyof Values;
+};
 
 export type FormInputProps<Values> = {
   field: FormField<Values>;
@@ -26,6 +32,18 @@ export const FormInput: FormInput = (props) => {
   };
 
   switch (fieldType) {
+    case 'autocomplete': {
+      const autocompleteInputProps = other as AutocompleteInputProps;
+      return (
+        <AutocompleteInput
+          {...autocompleteInputProps}
+          className={clsx(classes.default, autocompleteInputProps.className)}
+          value={autocompleteInputProps.value || ((extendedProps.value as unknown) as string)}
+          onChange={autocompleteInputProps.onChange || extendedProps.onChange}
+          errorMessage={autocompleteInputProps.errorMessage || (extendedProps.errorMessage as string)}
+        />
+      );
+    }
     default: {
       const textProps = other as TextInputProps;
       return (

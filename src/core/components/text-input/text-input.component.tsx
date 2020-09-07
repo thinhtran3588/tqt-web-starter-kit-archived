@@ -74,12 +74,13 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
               tabIndex={-1}
               className={classes.iconButton}
               onClick={() => setShowPassword(!showPassword)}
-              title={t('common.showPassword')}>
+              title={t('common.showPassword')}
+              size='small'>
               {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </IconButton>
           )}
           {clearButtonVisible && (
-            <IconButton tabIndex={-1} className={classes.iconButton} onClick={clear}>
+            <IconButton tabIndex={-1} className={classes.iconButton} onClick={clear} size='small'>
               <CloseIcon />
             </IconButton>
           )}
