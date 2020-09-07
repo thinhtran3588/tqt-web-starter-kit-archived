@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import MenuIcon from '@material-ui/icons/Menu';
 import NoSsr from '@material-ui/core/NoSsr';
+import Box from '@material-ui/core/Box';
 import {config} from '@app/core/config';
 import {LanguageSetting} from '@app/core/components/language-setting/language-setting.component';
 import {Link} from '@app/core/components/link/link.component';
@@ -31,12 +32,28 @@ export const Header = (): JSX.Element => {
   return (
     <AppBar position='static' variant='elevation'>
       <Toolbar>
-        <Link href='/'>
-          <img src='/images/icons/app-icon.png' alt='TQT Logo' className={classes.logo} />
-        </Link>
-        <Typography variant='h6' className={classes.title}>
-          {appName}
-        </Typography>
+        <Hidden mdUp>
+          <IconButton
+            role='button'
+            title={t('nav.openMenu')}
+            color='inherit'
+            onClick={() => setOpenDrawer(!openDrawer)}>
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
+        <Hidden mdDown>
+          <Link href='/'>
+            <img src='/images/icons/app-icon.png' alt='TQT Logo' className={classes.logo} />
+          </Link>
+        </Hidden>
+        <Box className={classes.title}>
+          <Hidden mdDown>
+            <Typography variant='h6' className={classes.title}>
+              {appName}
+            </Typography>
+          </Hidden>
+        </Box>
+
         <Hidden smDown>
           {menuItems.map((item) => (
             <Link href={item.url} key={item.url}>
@@ -50,15 +67,6 @@ export const Header = (): JSX.Element => {
           <UserInfo />
         </NoSsr>
         <LanguageSetting />
-        <Hidden mdUp>
-          <IconButton
-            role='button'
-            title={t('nav.openMenu')}
-            color='inherit'
-            onClick={() => setOpenDrawer(!openDrawer)}>
-            <MenuIcon />
-          </IconButton>
-        </Hidden>
       </Toolbar>
       <Drawer menuItems={menuItems} open={openDrawer} setOpen={setOpenDrawer} />
     </AppBar>

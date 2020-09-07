@@ -18,7 +18,7 @@ export const AuthLayout = (props: BaseLayoutProps): JSX.Element => {
       <Grid container component='main' className={classes.root}>
         <Grid item xs={false} sm={4} md={7} lg={8} xl={9} className={classes.image} />
         <Grid item xs={12} sm={8} md={5} lg={4} xl={3} component={Paper} elevation={6} square>
-          <div className={classes.paper}>
+          <Box className={classes.paper}>
             <img src='/images/icons/app-logo.png' alt='TQT Logo' className={classes.logo} />
             <Box className={classes.formContainer}>{children}</Box>
             <Box>
@@ -29,7 +29,7 @@ export const AuthLayout = (props: BaseLayoutProps): JSX.Element => {
                 {`Copyright © ${config.author} ${new Date().getFullYear()}`}
               </Typography>
             </Box>
-          </div>
+          </Box>
         </Grid>
       </Grid>
     </BaseLayout>

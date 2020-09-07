@@ -4,6 +4,7 @@ import {useI18n} from 'next-localization';
 import SwipeableViews from 'react-swipeable-views';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box';
 import {getStaticPaths, getStaticProps} from '@app/core/i18n/i18n';
 import {AuthLayout} from '@app/core/components/auth-layout/auth-layout.component';
 import {EmailSignIn} from './components/email-sign-in/email-sign-in.component';
@@ -28,12 +29,12 @@ export const SignInScreen = (): JSX.Element => {
         <Tab label={t('auth.signUp')} id='tab-sign-up' aria-controls='tab-sign-up' className={classes.tab} />
       </Tabs>
       <SwipeableViews axis='x' index={tabIndex} onChangeIndex={setTabIndex}>
-        <div role='tabpanel' hidden={tabIndex !== 0} id='tab-panel-sign-in' aria-labelledby='tab-panel-sign-in'>
+        <Box role='tabpanel' hidden={tabIndex !== 0} id='tab-panel-sign-in' aria-labelledby='tab-panel-sign-in'>
           {tabIndex === 0 && <EmailSignIn />}
-        </div>
-        <div role='tabpanel' hidden={tabIndex !== 1} id='tab-panel-sign-up' aria-labelledby='tab-panel-sign-up'>
+        </Box>
+        <Box role='tabpanel' hidden={tabIndex !== 1} id='tab-panel-sign-up' aria-labelledby='tab-panel-sign-up'>
           {tabIndex === 1 && <EmailSignUp />}
-        </div>
+        </Box>
       </SwipeableViews>
       <SocialSignIn />
     </AuthLayout>
