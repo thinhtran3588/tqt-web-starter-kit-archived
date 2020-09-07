@@ -3,6 +3,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import {Link} from '@app/core/components/link/link.component';
 import {useStyles} from './drawer.styles';
 
@@ -36,6 +37,7 @@ export const Drawer = (props: DrawerProps): JSX.Element => {
             <ListItem button>
               <ListItemText primary={item.title} />
             </ListItem>
+            <Divider className={classes.divider} />
           </Link>
         ))}
       </List>
