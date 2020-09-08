@@ -6,10 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import InputIcon from '@material-ui/icons/Input';
 import type {RootState} from '@app/stores/store';
 import {Link} from '@app/core/components/link/link.component';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Box from '@material-ui/core/Box';
+import Hidden from '@material-ui/core/Hidden';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import type {AuthService} from '@app/modules/auth/interfaces/auth.service.interface';
 import {useStyles} from './user-info.styles';
@@ -41,13 +42,15 @@ export const UserInfo = (): JSX.Element => {
   };
 
   return (
-    <Box>
+    <>
       {auth.isSignedIn && (
         <>
-          <Box onClick={openMenu} className={classes.profile}>
-            <Typography className={classes.userTitle} variant='body2'>
-              {helloMessage}
-            </Typography>
+          <Box title={t('nav.openUserMenu')} onClick={openMenu} className={classes.profile}>
+            <Hidden smDown>
+              <Typography className={classes.userTitle} variant='body2'>
+                {helloMessage}
+              </Typography>
+            </Hidden>
             <AccountCircleIcon />
           </Box>
           <Menu anchorEl={menuAnchorEl} keepMounted open={Boolean(menuAnchorEl)} role='button' onClose={closeMenu}>
@@ -57,11 +60,11 @@ export const UserInfo = (): JSX.Element => {
       )}
       {!auth.isSignedIn && (
         <Link href='/sign-in'>
-          <Button variant='text' color='inherit' size='large' className={classes.linkButton} startIcon={<InputIcon />}>
-            {t('nav.signIn')}
-          </Button>
+          <IconButton role='button' color='inherit' title={t('nav.signIn')}>
+            <InputIcon />
+          </IconButton>
         </Link>
       )}
-    </Box>
+    </>
   );
 };

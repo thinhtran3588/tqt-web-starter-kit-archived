@@ -7,9 +7,12 @@ export const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   linkButton: {
-    padding: theme.spacing(2.5),
+    padding: theme.spacing(2.25),
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4),
   },

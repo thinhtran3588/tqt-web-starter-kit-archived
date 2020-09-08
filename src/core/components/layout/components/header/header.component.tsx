@@ -31,7 +31,7 @@ export const Header = (): JSX.Element => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
-    <AppBar position='static' variant='elevation'>
+    <AppBar position='static' variant='elevation' color='inherit'>
       <Toolbar>
         <Hidden mdUp>
           <IconButton
@@ -42,13 +42,11 @@ export const Header = (): JSX.Element => {
             <MenuIcon />
           </IconButton>
         </Hidden>
-        <Hidden mdDown>
-          <Link href='/'>
-            <img src='/images/icons/app-icon.png' alt='TQT Logo' className={classes.logo} />
-          </Link>
-        </Hidden>
+        <Link href='/'>
+          <img src='/images/icons/app-icon.png' alt='TQT Logo' className={classes.logo} />
+        </Link>
         <Box className={classes.title}>
-          <Hidden mdDown>
+          <Hidden xsDown>
             <Typography variant='h6' className={classes.title}>
               {appName}
             </Typography>
