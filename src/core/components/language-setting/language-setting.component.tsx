@@ -7,6 +7,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {config} from '@app/core/config';
 import {languages, languageMap} from '@app/core/i18n/i18n';
+import {useDispatch} from 'react-redux';
+import type {Dispatch} from '@app/stores/store';
 import {useStyles} from './language-setting.styles';
 
 export const LanguageSetting = (): JSX.Element => {
@@ -14,6 +16,9 @@ export const LanguageSetting = (): JSX.Element => {
   const classes = useStyles();
   const {t, locale} = useI18n();
   const [langAnchorEl, setLngAnchorEl] = useState(undefined);
+  const {
+    settings: {setLanguage},
+  } = useDispatch<Dispatch>();
 
   const openLngMenu = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     setLngAnchorEl(event.currentTarget);
@@ -30,6 +35,7 @@ export const LanguageSetting = (): JSX.Element => {
       .map((path, index) => (index === 1 ? lng : path))
       .join('/');
     router.push(router.pathname, as);
+    setLanguage(lng);
   };
 
   return (

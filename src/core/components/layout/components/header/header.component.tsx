@@ -12,6 +12,7 @@ import NoSsr from '@material-ui/core/NoSsr';
 import Box from '@material-ui/core/Box';
 import {config} from '@app/core/config';
 import {LanguageSetting} from '@app/core/components/language-setting/language-setting.component';
+import {ThemeSetting} from '@app/core/components/theme-setting/theme-setting.component';
 import {Link} from '@app/core/components/link/link.component';
 import {Drawer} from '../drawer/drawer.component';
 import {useStyles} from './header.styles';
@@ -67,6 +68,7 @@ export const Header = (): JSX.Element => {
           <UserInfo />
         </NoSsr>
         <LanguageSetting />
+        <ThemeSetting />
       </Toolbar>
       <Drawer menuItems={menuItems} open={openDrawer} setOpen={setOpenDrawer} />
     </AppBar>

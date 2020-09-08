@@ -8,6 +8,7 @@ import {config} from '@app/core/config';
 import {BaseLayout, BaseLayoutProps} from '../base-layout/base-layout.component';
 import {useStyles} from './auth-layout.styles';
 import {LanguageSetting} from '../language-setting/language-setting.component';
+import {ThemeSetting} from '../theme-setting/theme-setting.component';
 
 export const AuthLayout = (props: BaseLayoutProps): JSX.Element => {
   const {children, ...other} = props;
@@ -21,7 +22,11 @@ export const AuthLayout = (props: BaseLayoutProps): JSX.Element => {
           <Box className={classes.paper}>
             <img src='/images/icons/app-logo.png' alt='TQT Logo' className={classes.logo} />
             <Box className={classes.formContainer}>{children}</Box>
-            <LanguageSetting />
+            <Box className={classes.settings}>
+              <LanguageSetting />
+              <ThemeSetting />
+            </Box>
+
             <Typography variant='body2' color='textSecondary' align='center'>
               {`Copyright © ${config.author} ${new Date().getFullYear()}`}
             </Typography>

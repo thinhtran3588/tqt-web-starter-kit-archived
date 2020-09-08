@@ -29,4 +29,7 @@ export const useStyles = makeStyles((theme) => ({
     height: theme.spacing(8),
     marginBottom: theme.spacing(2),
   },
+  settings: {
+    flexDirection: 'row',
+  },
 }));
